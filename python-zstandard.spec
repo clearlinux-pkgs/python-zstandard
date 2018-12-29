@@ -4,7 +4,7 @@
 #
 Name     : python-zstandard
 Version  : 0.10.2
-Release  : 2
+Release  : 3
 URL      : https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
 Summary  : No detailed summary available

@@ -4,7 +4,7 @@
 #
 Name     : python-zstandard
 Version  : 0.10.2
-Release  : 4
+Release  : 5
 URL      : https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
 Summary  : Python bindings to the Zstandard (zstd) compression library
@@ -14,17 +14,11 @@ Requires: python-zstandard-license = %{version}-%{release}
 Requires: python-zstandard-python = %{version}-%{release}
 Requires: python-zstandard-python3 = %{version}-%{release}
 Requires: attrs
-Requires: bashlex
 Requires: cffi
 Requires: enum34
 Requires: nose
-Requires: pluggy
-Requires: py
 Requires: pycparser
 Requires: six
-Requires: tox
-Requires: virtualenv
-Requires: wheel
 BuildRequires : buildreq-distutils3
 BuildRequires : hypothesis
 BuildRequires : pluggy
@@ -75,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550531140
+export SOURCE_DATE_EPOCH=1550531570
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

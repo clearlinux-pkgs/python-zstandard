@@ -4,19 +4,19 @@
 #
 Name     : python-zstandard
 Version  : 0.10.2
-Release  : 3
+Release  : 4
 URL      : https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
-Summary  : No detailed summary available
+Summary  : Python bindings to the Zstandard (zstd) compression library
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
 Requires: python-zstandard-license = %{version}-%{release}
 Requires: python-zstandard-python = %{version}-%{release}
 Requires: python-zstandard-python3 = %{version}-%{release}
 Requires: attrs
+Requires: bashlex
 Requires: cffi
 Requires: enum34
-Requires: hypothesis
 Requires: nose
 Requires: pluggy
 Requires: py
@@ -26,6 +26,7 @@ Requires: tox
 Requires: virtualenv
 Requires: wheel
 BuildRequires : buildreq-distutils3
+BuildRequires : hypothesis
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
@@ -74,14 +75,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541425617
+export SOURCE_DATE_EPOCH=1550531140
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-zstandard

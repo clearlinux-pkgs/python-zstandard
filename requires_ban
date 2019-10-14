@@ -7,3 +7,4 @@ wheel
 py
 tox
 pluggy
+enum34

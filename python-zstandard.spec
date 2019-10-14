@@ -4,10 +4,10 @@
 #
 Name     : python-zstandard
 Version  : 0.12.0
-Release  : 10
+Release  : 11
 URL      : https://github.com/indygreg/python-zstandard/archive/0.12.0/python-zstandard-0.12.0.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.12.0/python-zstandard-0.12.0.tar.gz
-Summary  : Python bindings to the Zstandard (zstd) compression library
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
 Requires: python-zstandard-license = %{version}-%{release}
@@ -19,7 +19,6 @@ Requires: cffi
 Requires: colorama
 Requires: configparser
 Requires: contextlib2
-Requires: enum34
 Requires: filelock
 Requires: funcsigs
 Requires: more-itertools
@@ -38,7 +37,6 @@ BuildRequires : cffi
 BuildRequires : colorama
 BuildRequires : configparser
 BuildRequires : contextlib2
-BuildRequires : enum34
 BuildRequires : filelock
 BuildRequires : funcsigs
 BuildRequires : hypothesis
@@ -99,8 +97,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568908466
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1571083400
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -121,9 +118,9 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-zstandard
-cp LICENSE %{buildroot}/usr/share/package-licenses/python-zstandard/LICENSE
-cp zstd/COPYING %{buildroot}/usr/share/package-licenses/python-zstandard/zstd_COPYING
-cp zstd/LICENSE %{buildroot}/usr/share/package-licenses/python-zstandard/zstd_LICENSE
+cp %{_builddir}/python-zstandard-0.12.0/LICENSE %{buildroot}/usr/share/package-licenses/python-zstandard/bdfd20ae0e3f88b5609da6191fbb89f33933d948
+cp %{_builddir}/python-zstandard-0.12.0/zstd/COPYING %{buildroot}/usr/share/package-licenses/python-zstandard/1d8c93712cbc9117a9e55a7ff86cebd066c8bfd8
+cp %{_builddir}/python-zstandard-0.12.0/zstd/LICENSE %{buildroot}/usr/share/package-licenses/python-zstandard/c4130945ca3d1f8ea4a3e8af36d3c18b2232116c
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -134,9 +131,9 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/python-zstandard/LICENSE
-/usr/share/package-licenses/python-zstandard/zstd_COPYING
-/usr/share/package-licenses/python-zstandard/zstd_LICENSE
+/usr/share/package-licenses/python-zstandard/1d8c93712cbc9117a9e55a7ff86cebd066c8bfd8
+/usr/share/package-licenses/python-zstandard/bdfd20ae0e3f88b5609da6191fbb89f33933d948
+/usr/share/package-licenses/python-zstandard/c4130945ca3d1f8ea4a3e8af36d3c18b2232116c
 
 %files python
 %defattr(-,root,root,-)

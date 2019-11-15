@@ -4,7 +4,7 @@
 #
 Name     : python-zstandard
 Version  : 0.12.0
-Release  : 11
+Release  : 12
 URL      : https://github.com/indygreg/python-zstandard/archive/0.12.0/python-zstandard-0.12.0.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.12.0/python-zstandard-0.12.0.tar.gz
 Summary  : No detailed summary available
@@ -17,7 +17,6 @@ Requires: atomicwrites
 Requires: attrs
 Requires: cffi
 Requires: colorama
-Requires: configparser
 Requires: contextlib2
 Requires: filelock
 Requires: funcsigs
@@ -35,7 +34,6 @@ BuildRequires : attrs
 BuildRequires : buildreq-distutils3
 BuildRequires : cffi
 BuildRequires : colorama
-BuildRequires : configparser
 BuildRequires : contextlib2
 BuildRequires : filelock
 BuildRequires : funcsigs
@@ -91,13 +89,14 @@ python3 components for the python-zstandard package.
 
 %prep
 %setup -q -n python-zstandard-0.12.0
+cd %{_builddir}/python-zstandard-0.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571083400
+export SOURCE_DATE_EPOCH=1573850131
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,7 +112,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}

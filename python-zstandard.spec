@@ -4,7 +4,7 @@
 #
 Name     : python-zstandard
 Version  : 0.13.0
-Release  : 15
+Release  : 16
 URL      : https://github.com/indygreg/python-zstandard/archive/0.13.0/python-zstandard-0.13.0.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.13.0/python-zstandard-0.13.0.tar.gz
 Summary  : Python bindings to the Zstandard (zstd) compression library

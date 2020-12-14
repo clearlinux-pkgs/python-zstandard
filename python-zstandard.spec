@@ -4,7 +4,7 @@
 #
 Name     : python-zstandard
 Version  : 0.14.1
-Release  : 20
+Release  : 21
 URL      : https://github.com/indygreg/python-zstandard/archive/0.14.1/python-zstandard-0.14.1.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.14.1/python-zstandard-0.14.1.tar.gz
 Summary  : Zstandard bindings for Python

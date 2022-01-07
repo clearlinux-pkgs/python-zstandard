@@ -4,7 +4,7 @@
 #
 Name     : python-zstandard
 Version  : 0.16.0
-Release  : 26
+Release  : 27
 URL      : https://github.com/indygreg/python-zstandard/archive/0.16.0/python-zstandard-0.16.0.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.16.0/python-zstandard-0.16.0.tar.gz
 Summary  : Zstandard bindings for Python
@@ -13,36 +13,32 @@ License  : BSD-3-Clause GPL-2.0
 Requires: python-zstandard-license = %{version}-%{release}
 Requires: python-zstandard-python = %{version}-%{release}
 Requires: python-zstandard-python3 = %{version}-%{release}
-Requires: atomicwrites
-Requires: attrs
-Requires: certifi
-Requires: cffi
-Requires: colorama
-Requires: execnet
-Requires: iniconfig
-Requires: mypy
-Requires: packaging
-Requires: pycparser
-Requires: pyparsing
-Requires: sortedcontainers
-Requires: toml
-Requires: zipp
-BuildRequires : atomicwrites
-BuildRequires : attrs
 BuildRequires : buildreq-distutils3
-BuildRequires : certifi
-BuildRequires : cffi
-BuildRequires : colorama
-BuildRequires : execnet
-BuildRequires : hypothesis-python
-BuildRequires : iniconfig
-BuildRequires : mypy
-BuildRequires : packaging
-BuildRequires : pycparser
-BuildRequires : pyparsing
-BuildRequires : sortedcontainers
-BuildRequires : toml
-BuildRequires : zipp
+BuildRequires : pypi(atomicwrites)
+BuildRequires : pypi(attrs)
+BuildRequires : pypi(bashlex)
+BuildRequires : pypi(bracex)
+BuildRequires : pypi(certifi)
+BuildRequires : pypi(cffi)
+BuildRequires : pypi(cibuildwheel)
+BuildRequires : pypi(colorama)
+BuildRequires : pypi(execnet)
+BuildRequires : pypi(hypothesis)
+BuildRequires : pypi(importlib_metadata)
+BuildRequires : pypi(iniconfig)
+BuildRequires : pypi(mypy)
+BuildRequires : pypi(mypy_extensions)
+BuildRequires : pypi(packaging)
+BuildRequires : pypi(pluggy)
+BuildRequires : pypi(py)
+BuildRequires : pypi(pycparser)
+BuildRequires : pypi(pyparsing)
+BuildRequires : pypi(sortedcontainers)
+BuildRequires : pypi(toml)
+BuildRequires : pypi(typed_ast)
+BuildRequires : pypi(typing_extensions)
+BuildRequires : pypi(wheel)
+BuildRequires : pypi(zipp)
 
 %description
 ================
@@ -86,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635520314
+export SOURCE_DATE_EPOCH=1641521560
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -96,13 +92,8 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
-python3 setup.py build
+python3 -m build --wheel --skip-dependency-check --no-isolation
 
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
@@ -110,7 +101,7 @@ mkdir -p %{buildroot}/usr/share/package-licenses/python-zstandard
 cp %{_builddir}/python-zstandard-0.16.0/LICENSE %{buildroot}/usr/share/package-licenses/python-zstandard/bdfd20ae0e3f88b5609da6191fbb89f33933d948
 cp %{_builddir}/python-zstandard-0.16.0/zstd/COPYING %{buildroot}/usr/share/package-licenses/python-zstandard/1d8c93712cbc9117a9e55a7ff86cebd066c8bfd8
 cp %{_builddir}/python-zstandard-0.16.0/zstd/LICENSE %{buildroot}/usr/share/package-licenses/python-zstandard/c4130945ca3d1f8ea4a3e8af36d3c18b2232116c
-python3 -tt setup.py build  install --root=%{buildroot}
+pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----

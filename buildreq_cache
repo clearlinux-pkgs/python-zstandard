@@ -1,4 +1,4 @@
-0.16.0
+0.17.0
 pypi(atomicwrites)
 pypi(attrs)
 pypi(bashlex)
@@ -20,6 +20,7 @@ pypi(pycparser)
 pypi(pyparsing)
 pypi(sortedcontainers)
 pypi(toml)
+pypi(tomli)
 pypi(typed_ast)
 pypi(typing_extensions)
 pypi(wheel)

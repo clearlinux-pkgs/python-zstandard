@@ -7,7 +7,7 @@
 #
 Name     : python-zstandard
 Version  : 0.22.0
-Release  : 38
+Release  : 39
 URL      : https://github.com/indygreg/python-zstandard/archive/0.22.0/python-zstandard-0.22.0.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.22.0/python-zstandard-0.22.0.tar.gz
 Source1  : http://localhost/cgit/vendor/python-zstandard/snapshot/python-zstandard-2023-11-02-14-51-57.tar.xz
@@ -73,6 +73,7 @@ python components for the python-zstandard package.
 Summary: python3 components for the python-zstandard package.
 Group: Default
 Requires: python3-core
+Provides: pypi(zstandard)
 Requires: pypi(atomicwrites)
 Requires: pypi(attrs)
 Requires: pypi(bashlex)

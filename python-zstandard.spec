@@ -7,7 +7,7 @@
 #
 Name     : python-zstandard
 Version  : 0.23.0
-Release  : 41
+Release  : 42
 URL      : https://github.com/indygreg/python-zstandard/archive/0.23.0/python-zstandard-0.23.0.tar.gz
 Source0  : https://github.com/indygreg/python-zstandard/archive/0.23.0/python-zstandard-0.23.0.tar.gz
 Source1  : http://localhost/cgit/vendor/python-zstandard/snapshot/python-zstandard-2024-07-15-17-05-01.tar.xz
